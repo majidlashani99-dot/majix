@@ -1,1 +1,1120 @@
-<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020"><script src="https://telegram.org/js/telegram-web-app.js"></script><title>Majix</title><style>:root{--bg:#090d1c;--p:#121a31;--p2:#1b294b;--t:#f7f8ff;--m:#8d99bb;--a:#7c5cff;--c:#22d3ee;--g:#ffd166}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#22245a,#090d1c 45%);color:var(--t);font-family:Tahoma,Arial}.app{max-width:520px;margin:auto;padding:20px 16px 94px}.top,.row,.section{display:flex;justify-content:space-between;align-items:center}.top{margin-bottom:20px}.brand{font-size:28px;font-weight:900}.brand i{color:var(--c);font-style:normal}.user,.pill{background:#192341;border:1px solid #29365e;border-radius:20px;padding:8px 12px;font-size:12px}.hero{background:linear-gradient(135deg,#6352ec,#218db5);border-radius:24px;padding:22px;box-shadow:0 18px 50px #17175a80}.muted,.label{color:var(--m);font-size:12px}.balance{font-size:42px;font-weight:900;margin:8px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.stat,.card,.prediction{background:var(--p);border:1px solid #202d4e;border-radius:18px;padding:15px}.stat b{display:block;font-size:18px;margin-top:6px}.section{margin:22px 2px 10px}.section h3{margin:0;font-size:17px}.link{color:var(--c);font-size:12px}.task{display:flex;gap:11px;align-items:center;padding:14px 0;border-bottom:1px solid #25304b}.task:last-child{border:0}.icon{width:42px;height:42px;display:grid;place-items:center;background:#202c50;border-radius:14px;font-size:21px}.main{flex:1}.main b{font-size:13px}.main p{margin:6px 0 0;color:var(--m);font-size:11px}.reward{color:var(--g);font-size:11px;font-weight:bold}.btn{border:0;border-radius:11px;background:var(--a);color:white;padding:9px 12px;font-weight:bold;cursor:pointer}.page{display:none}.page.active{display:block}.prediction{background:linear-gradient(120deg,#171f40,#10162a)}.team{text-align:center;font-size:12px}.team strong{display:block;font-size:23px}.odds{display:flex;gap:7px;margin-top:13px}.odd{flex:1;background:var(--p2);border:0;color:white;border-radius:10px;padding:9px;font-size:11px}.bottom{position:fixed;bottom:0;left:0;right:0;background:#0d1327ed;backdrop-filter:blur(16px);border-top:1px solid #243052;display:flex;justify-content:center;gap:5px;padding:9px 6px calc(9px + env(safe-area-inset-bottom));z-index:5}.tab{flex:1;max-width:100px;text-align:center;color:var(--m);font-size:10px;padding:7px 2px;border-radius:13px;cursor:pointer}.tab span{display:block;font-size:20px;margin-bottom:3px}.tab.active{background:#25204d;color:white}.toast{position:fixed;top:18px;left:16px;right:16px;background:#1dbd83;color:#071a16;padding:13px;border-radius:13px;text-align:center;font-weight:bold;display:none;z-index:9}</style></head><body><main class="app"><header class="top"><div class="brand">maji<i>x</i></div><div class="user" id="user">👤 مجید</div></header><section id="home" class="page active"><div class="hero"><div class="label">موجودی کل توکن</div><div class="balance" id="balance">0</div><div class="label">MJX قابل استفاده</div></div><div class="grid"><div class="stat"><span class="muted">تسک امروز</span><b id="done">0/4</b></div><div class="stat"><span class="muted">درآمد امروز</span><b id="today">0</b></div><div class="stat"><span class="muted">رتبه</span><b>#128</b></div></div><div class="section"><h3>ماموریت‌های داغ</h3><span class="link" onclick="nav('tasks')">همه ›</span></div><div class="card" id="homeTasks"></div><div class="section"><h3>پیش‌بینی ویژه</h3><span class="link" onclick="nav('predict')">مشاهده ›</span></div><div class="prediction"><div class="row"><div class="team"><strong>⚽</strong>رئال</div><span class="muted">امشب ۲۲:۳۰</span><div class="team"><strong>🔴</strong>بارسا</div></div><div class="odds"><button class="odd" onclick="pick('برد رئال')">برد رئال<br><b>۲۵ MJX</b></button><button class="odd" onclick="pick('مساوی')">مساوی<br><b>۱۵ MJX</b></button><button class="odd" onclick="pick('برد بارسا')">برد بارسا<br><b>۲۵ MJX</b></button></div></div></section><section id="tasks" class="page"><div class="section"><h3>همه ماموریت‌ها</h3><span class="muted">پاداش بگیر</span></div><div class="card" id="allTasks"></div></section><section id="predict" class="page"><div class="section"><h3>پیش‌بینی‌ها</h3></div><div class="prediction"><div class="row"><div class="team"><strong>⚽</strong>رئال</div><span class="muted">امشب</span><div class="team"><strong>🔴</strong>بارسا</div></div><div class="odds"><button class="odd" onclick="pick('برد رئال')">برد رئال<br><b>۲۵ MJX</b></button><button class="odd" onclick="pick('مساوی')">مساوی<br><b>۱۵ MJX</b></button><button class="odd" onclick="pick('برد بارسا')">برد بارسا<br><b>۲۵ MJX</b></button></div></div><div class="card" style="margin-top:12px"><b>قیمت آینده MJX</b><p class="muted">بازار پیش‌بینی قیمت به‌زودی فعال می‌شود.</p></div></section><section id="wallet" class="page"><div class="section"><h3>کیف پول MJX</h3></div><div class="hero"><div class="label">موجودی قابل استفاده</div><div class="balance" id="balance2">0</div><div class="label">MJX</div></div><div class="card" style="margin-top:14px"><b>ارزش تقریبی · نسخه دمو</b><p class="muted">توکن‌ها برای شرکت در پیش‌بینی‌های داخل برنامه استفاده می‌شوند.</p></div></section><section id="profile" class="page"><div class="section"><h3>پروفایل من</h3></div><div class="card"><div style="font-size:20px">👤 <b id="profileName">مجید</b></div><p class="muted">عضو جامعه Majix · سطح مبتدی</p><button class="btn" onclick="share()">📤 دعوت از دوستان</button></div><div class="card" style="margin-top:12px"><b>تنظیمات ⚙️</b><p class="muted">اعلان‌ها و زبان برنامه در نسخه بعدی اضافه می‌شوند.</p></div></section></main><nav class="bottom"><div class="tab active" onclick="nav('home',this)"><span>⌂</span>خانه</div><div class="tab" onclick="nav('tasks',this)"><span>🎯</span>تسک‌ها</div><div class="tab" onclick="nav('predict',this)"><span>⚽</span>پیش‌بینی</div><div class="tab" onclick="nav('wallet',this)"><span>◈</span>کیف پول</div><div class="tab" onclick="nav('profile',this)"><span>☺</span>پروفایل</div></nav><div id="toast" class="toast"></div><script>let bal=0,tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand();let u=tg.initDataUnsafe?.user;if(u){let n=u.first_name||u.username||'کاربر';user.textContent='👤 '+n;profileName.textContent=n}}function item(t){let i=t.type==='video'?'🎬':t.type==='social'?'📣':t.type==='invite'?'👥':'🎁';return `<div class="task"><div class="icon">${i}</div><div class="main"><b>${t.title}</b><p>${t.description}</p></div><div><div class="reward">+${t.reward} MJX</div><button class="btn" onclick="complete(${t.id})">انجام</button></div></div>`}async function load(){let m=await fetch('/api/me').then(r=>r.json());bal=m.balance;render();let ts=await fetch('/api/tasks').then(r=>r.json());allTasks.innerHTML=ts.map(item).join('');homeTasks.innerHTML=ts.slice(0,3).map(item).join('')}function render(){balance.textContent=bal;balance2.textContent=bal;today.textContent=bal;done.textContent=bal?'1/4':'0/4'}async function complete(id){let r=await fetch('/api/tasks/'+id+'/complete',{method:'POST'}).then(x=>x.json());if(r.ok){bal=r.balance;render();show('تبریک! '+r.reward+' MJX گرفتی 🎉');if(tg?.HapticFeedback)tg.HapticFeedback.notificationOccurred('success')}}function pick(x){show('پیش‌بینی «'+x+'» ثبت شد')}function share(){show('لینک دعوت آماده شد')}function nav(id,el){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');if(el){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active')}}function show(s){toast.textContent=s;toast.style.display='block';setTimeout(()=>toast.style.display='none',2300)}load()</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>MJX Mini App - Stealth Luxury Web3</title>
+  
+  <!-- Telegram WebApp SDK & Lucide Icons -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-base: #0B0E14;
+      --bg-card: rgba(18, 22, 33, 0.72);
+      --bg-card-hover: rgba(26, 32, 48, 0.85);
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --border-cyan: rgba(0, 242, 254, 0.35);
+      
+      --cyan: #00F2FE;
+      --cyan-glow: rgba(0, 242, 254, 0.25);
+      --violet: #7F00FF;
+      --violet-glow: rgba(127, 0, 255, 0.35);
+      --magenta: #FF007A;
+      
+      --text-main: #FFFFFF;
+      --text-muted: #8E9BAE;
+      --text-dim: #4B5565;
+      
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 95px; /* space for bottom bar */
+    }
+
+    /* Ambient luxury background glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: 10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, rgba(11, 14, 20, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 10%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(127, 0, 255, 0.07) 0%, rgba(11, 14, 20, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 16px 16px 20px 16px;
+    }
+
+    /* Typography & Display */
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+    .text-cyan { color: var(--cyan); }
+    .text-violet { color: var(--violet); }
+    .text-muted { color: var(--text-muted); }
+    
+    /* Luxury Glassmorphism Cards */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      margin-bottom: 14px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:active {
+      transform: scale(0.985);
+    }
+    .glass-card-glow-cyan {
+      border: 1px solid var(--border-cyan);
+      box-shadow: 0 0 24px var(--cyan-glow);
+    }
+
+    /* Buttons */
+    .btn-cyan {
+      background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+      color: #030712;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 14px 22px;
+      font-size: 15px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.35);
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    .btn-cyan:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 10px rgba(0, 242, 254, 0.2);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-main);
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      padding: 12px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-glass:active {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Badges */
+    .badge-vip {
+      background: linear-gradient(90deg, #7F00FF 0%, #E100FF 100%);
+      color: #FFF;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 10px var(--violet-glow);
+    }
+    .badge-reward {
+      background: rgba(0, 242, 254, 0.12);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Pages Container */
+    .page {
+      display: none;
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating 5-Tab Bottom Navigation Bar */
+    .bottom-nav-container {
+      position: fixed;
+      bottom: 14px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      padding: 0 16px;
+    }
+    .bottom-nav {
+      background: rgba(15, 19, 28, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+    .nav-item {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-size: 10px;
+      font-weight: 600;
+      gap: 3px;
+    }
+    .nav-item.active {
+      color: var(--cyan);
+      background: rgba(0, 242, 254, 0.09);
+    }
+    .nav-item i {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Screen Specific UI Elements */
+    /* Circular Progress Ring */
+    .progress-circle-wrap {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto;
+    }
+    .progress-circle-wrap svg {
+      transform: rotate(-90deg);
+    }
+
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(255,255,255,0.1);
+      transition: .3s;
+      border-radius: 34px;
+      border: 1px solid var(--border-glass);
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 18px; width: 18px; left: 2px; bottom: 2px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--cyan);
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+      background-color: #0B0E14;
+    }
+
+    /* Input Field */
+    .glass-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      color: #FFF;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .glass-input:focus {
+      border-color: var(--cyan);
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50px);
+      background: rgba(18, 22, 33, 0.95);
+      border: 1px solid var(--cyan);
+      box-shadow: 0 0 20px var(--cyan-glow);
+      color: #FFF;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Quick Action Chips */
+    .chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .chip.active {
+      background: var(--cyan);
+      color: #0B0E14;
+      font-weight: 700;
+      border-color: var(--cyan);
+    }
+
+    /* Quick Sub Navigation for auxiliary screens */
+    .subnav-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      margin-bottom: 12px;
+    }
+    .subnav-bar::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body>
+
+  <div id="toast"><i data-lucide="check-circle" style="color: var(--cyan); width: 18px;"></i> <span id="toast-msg">Success</span></div>
+
+  <div class="app-container">
+
+    <!-- ================= SCREEN 1: HOME DASHBOARD ================= -->
+    <section id="screen-home" class="page active">
+      <!-- Top User Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--cyan); overflow: hidden; background: #161B26; display: flex; align-items: center; justify-content: center;">
+            <i data-lucide="user" style="color: var(--cyan); width: 22px;"></i>
+          </div>
+          <div>
+            <div style="font-weight: 700; font-size: 16px;" id="home-username">Majid</div>
+            <div class="badge-vip"><i data-lucide="shield-check" style="width: 10px; height: 10px;"></i> VIP Trader</div>
+          </div>
+        </div>
+        <button class="btn-glass" onclick="goToScreen('screen-settings')" style="padding: 8px; border-radius: 50%;">
+          <i data-lucide="settings" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+
+      <!-- Main Balance Card -->
+      <div class="glass-card glass-card-glow-cyan" style="text-align: center; padding: 24px 18px;">
+        <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Total Balance</div>
+        <div class="font-outfit" style="font-size: 38px; font-weight: 800; margin: 6px 0; letter-spacing: -0.5px;">
+          <span id="home-balance">5,870</span> <span style="font-size: 20px; color: var(--cyan);">$MJX</span>
+        </div>
+        <div style="font-size: 14px; color: var(--text-muted); font-weight: 500;">≈ $<span id="home-balance-usd">5.87</span> USD</div>
+
+        <!-- Center Circular Progress Ring -->
+        <div style="margin: 24px 0 14px 0;">
+          <div class="progress-circle-wrap">
+            <svg width="130" height="130">
+              <circle cx="65" cy="65" r="54" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="transparent" />
+              <circle cx="65" cy="65" r="54" stroke="url(#cyan-grad)" stroke-width="8" stroke-dasharray="339.29" stroke-dashoffset="140" stroke-linecap="round" fill="transparent" />
+              <defs>
+                <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00F2FE" />
+                  <stop offset="100%" stop-color="#7F00FF" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div style="position: absolute; top:0; left:0; right:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+              <span style="font-size: 10px; color: var(--text-muted); font-weight: 600;">WITHDRAW GOAL</span>
+              <span class="font-outfit" style="font-weight: 700; font-size: 15px; color: var(--cyan);">58.7%</span>
+            </div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Target: 1,000 $MJX Minimum</div>
+        </div>
+      </div>
+
+      <!-- Quick Action Cards -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+        <div class="glass-card" onclick="goToScreen('screen-watch')" style="cursor: pointer; margin-bottom: 0; padding: 16px;">
+          <div style="width: 36px; height: 36px; border-radius: 12px; background: rgba(0,242,254,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+            <i data-lucide="play" style="color: var(--cyan); width: 18px;"></i>
+          </div>
+          <div style="font-weight: 700; font-size: 15px;">Watch & Earn</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">+5 $MJX Daily</div>
+        </div>
+
+        <div class="glass-card" onclick="goToScreen('screen-bet')" style="cursor: pointer; margin-bottom: 0; padding: 16px;">
+          <div style="width: 36px; height: 36px; border-radius: 12px; background: rgba(127,0,255,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+            <i data-lucide="trophy" style="color: var(--violet); width: 18px;"></i>
+          </div>
+          <div style="font-weight: 700; font-size: 15px;">MajixBet Sports</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Predict & Win</div>
+        </div>
+      </div>
+
+      <!-- Quick Navigation Chips for all screens -->
+      <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); margin: 16px 0 8px 4px; text-transform: uppercase;">Quick Access Hub</div>
+      <div class="subnav-bar">
+        <div class="chip" onclick="goToScreen('screen-trading')">⚡ Live Trading</div>
+        <div class="chip" onclick="goToScreen('screen-referral')">🎁 Referral (10%)</div>
+        <div class="chip" onclick="goToScreen('screen-leaderboard')">🏆 Leaderboard</div>
+        <div class="chip" onclick="goToScreen('screen-withdraw')">💎 Withdraw</div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2: WATCH & EARN ================= -->
+    <section id="screen-watch" class="page">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom: 18px;">
+        <button class="btn-glass" onclick="goToScreen('screen-home')" style="padding: 8px; border-radius: 50%;"><i data-lucide="arrow-left" style="width: 18px;"></i></button>
+        <div>
+          <h2 style="font-size: 18px; font-weight: 700;">Watch & Earn</h2>
+          <p style="font-size: 12px; color: var(--text-muted);">Daily videos 3/5 remaining, +1 $MJX each</p>
+        </div>
+      </div>
+
+      <!-- Video Player Card -->
+      <div class="glass-card" style="padding: 12px; text-align: center;">
+        <div style="position: relative; width: 100%; height: 180px; border-radius: 16px; background: #121722; overflow: hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; border: 1px solid var(--border-glass);">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(0, 242, 254, 0.2); border: 2px solid var(--cyan); display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="simulateWatchVideo()">
+            <i data-lucide="play" style="color: var(--cyan); width: 28px; margin-left: 3px;"></i>
+          </div>
+          <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); padding: 4px 10px; border-radius: var(--radius-pill); font-size: 11px; color: var(--cyan); font-weight: 600; display:flex; align-items:center; gap:4px;">
+            <i data-lucide="clock" style="width: 12px;"></i> 00:30s
+          </div>
+        </div>
+        <div style="margin-top: 14px; text-align: left; padding: 0 4px;">
+          <div style="font-weight: 700; font-size: 15px;">Web3 Ecosystem & Algorithmic Indicators</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Watch full 30 seconds to claim your $MJX token</div>
+        </div>
+        <div style="margin-top: 14px;">
+          <button class="btn-cyan" onclick="simulateWatchVideo()"><i data-lucide="play-circle" style="width: 18px;"></i> Watch Video Now</button>
+        </div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin: 18px 0 10px 4px;">TODAY'S ACTIVITY</div>
+      <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center; padding: 14px;">
+        <div style="display:flex; align-items:center; gap: 10px;">
+          <i data-lucide="check-circle-2" style="color: var(--cyan); width: 20px;"></i>
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Sponsored Stream #1</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Completed at 10:45 AM</div>
+          </div>
+        </div>
+        <span class="badge-reward">+1 $MJX Claimed</span>
+      </div>
+      <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center; padding: 14px;">
+        <div style="display:flex; align-items:center; gap: 10px;">
+          <i data-lucide="check-circle-2" style="color: var(--cyan); width: 20px;"></i>
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">TradingView Integration #2</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Completed at 01:12 PM</div>
+          </div>
+        </div>
+        <span class="badge-reward">+1 $MJX Claimed</span>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 3: TASKS ================= -->
+    <section id="screen-tasks" class="page">
+      <div style="margin-bottom: 18px;">
+        <h2 style="font-size: 20px; font-weight: 700;">Complete Tasks & Earn</h2>
+        <p style="font-size: 13px; color: var(--text-muted);">Perform simple missions to boost your $MJX balance</p>
+      </div>
+
+      <div id="tasks-list">
+        <!-- Dynamic tasks populated or fallback -->
+        <div class="glass-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px;">
+          <div style="display:flex; align-items:center; gap: 14px;">
+            <div style="width: 42px; height: 42px; border-radius: 14px; background: rgba(0, 242, 254, 0.1); display:flex; align-items:center; justify-content:center;">
+              <i data-lucide="send" style="color: var(--cyan); width: 20px;"></i>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 14px;">Join Telegram Channel</div>
+              <div style="display:flex; align-items:center; gap:6px; margin-top: 4px;">
+                <span class="badge-reward">+50 $MJX</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-glass" style="padding: 8px 16px; border-color: var(--cyan);" onclick="claimTask(1, 'Joined Telegram Channel', 50)">Start</button>
+        </div>
+
+        <div class="glass-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px;">
+          <div style="display:flex; align-items:center; gap: 14px;">
+            <div style="width: 42px; height: 42px; border-radius: 14px; background: rgba(255, 255, 255, 0.08); display:flex; align-items:center; justify-content:center;">
+              <i data-lucide="twitter" style="color: #FFF; width: 20px;"></i>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 14px;">Follow Official X/Twitter</div>
+              <div style="display:flex; align-items:center; gap:6px; margin-top: 4px;">
+                <span class="badge-reward">+50 $MJX</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-glass" style="padding: 8px 16px; border-color: var(--cyan);" onclick="claimTask(2, 'Followed X/Twitter', 50)">Start</button>
+        </div>
+
+        <div class="glass-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px;">
+          <div style="display:flex; align-items:center; gap: 14px;">
+            <div style="width: 42px; height: 42px; border-radius: 14px; background: rgba(127, 0, 255, 0.15); display:flex; align-items:center; justify-content:center;">
+              <i data-lucide="users" style="color: var(--violet); width: 20px;"></i>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 14px;">Invite 3 Active Friends</div>
+              <div style="display:flex; align-items:center; gap:6px; margin-top: 4px;">
+                <span class="badge-reward">+100 $MJX</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-glass" style="padding: 8px 16px; border-color: var(--cyan);" onclick="claimTask(3, 'Invited 3 Friends', 100)">Start</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 4: TRADING ================= -->
+    <section id="screen-trading" class="page">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+        <div style="display:flex; align-items:center; gap: 8px;">
+          <span style="font-size: 18px; font-weight: 800;">BTC/USDT</span>
+          <span style="font-size: 11px; background: rgba(0, 242, 254, 0.15); color: var(--cyan); padding: 2px 6px; border-radius: 4px; font-weight: 700;">PERP</span>
+        </div>
+        <div style="text-align: right;">
+          <div class="font-outfit" style="font-weight: 700; font-size: 18px; color: var(--cyan);">$92,450.00</div>
+          <div style="font-size: 11px; color: #00E676; font-weight: 600;">+3.42% 24h</div>
+        </div>
+      </div>
+
+      <!-- Live Chart Mockup with Candlesticks & Indicator lines -->
+      <div class="glass-card" style="padding: 12px; margin-bottom: 14px;">
+        <div style="display:flex; justify-content:space-between; font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">
+          <span>MAJIX SMC ALGO (M1)</span>
+          <span style="color: var(--cyan);">● Kijun-Divergence Active</span>
+        </div>
+        <svg viewBox="0 0 320 130" style="width:100%; height:130px; overflow:visible;">
+          <!-- Grid Lines -->
+          <line x1="0" y1="30" x2="320" y2="30" stroke="rgba(255,255,255,0.04)" />
+          <line x1="0" y1="70" x2="320" y2="70" stroke="rgba(255,255,255,0.04)" />
+          <line x1="0" y1="110" x2="320" y2="110" stroke="rgba(255,255,255,0.04)" />
+          
+          <!-- Candlesticks Mock -->
+          <rect x="20" y="70" width="8" height="25" fill="#FF007A" />
+          <line x1="24" y1="60" x2="24" y2="105" stroke="#FF007A" stroke-width="1.5" />
+          
+          <rect x="50" y="55" width="8" height="30" fill="#00F2FE" />
+          <line x1="54" y1="45" x2="54" y2="95" stroke="#00F2FE" stroke-width="1.5" />
+          
+          <rect x="80" y="45" width="8" height="20" fill="#00F2FE" />
+          <line x1="84" y1="35" x2="84" y2="75" stroke="#00F2FE" stroke-width="1.5" />
+
+          <rect x="110" y="50" width="8" height="28" fill="#FF007A" />
+          <line x1="114" y1="40" x2="114" y2="90" stroke="#FF007A" stroke-width="1.5" />
+
+          <rect x="140" y="35" width="8" height="35" fill="#00F2FE" />
+          <line x1="144" y1="20" x2="144" y2="80" stroke="#00F2FE" stroke-width="1.5" />
+
+          <!-- Cyan Sand / Violet Indicator lines -->
+          <path d="M 10,85 Q 90,60 160,40 T 310,25" fill="none" stroke="var(--cyan)" stroke-width="2.5" />
+          <path d="M 10,95 Q 100,75 180,60 T 310,45" fill="none" stroke="var(--violet)" stroke-width="2" stroke-dasharray="4,4" />
+        </svg>
+      </div>
+
+      <!-- Trading Controls -->
+      <div class="glass-card" style="padding: 16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">STAKE AMOUNT ($MJX)</span>
+          <span style="font-size: 12px; color: var(--cyan); font-weight: 600;">Bal: 5,870</span>
+        </div>
+        <input type="number" class="glass-input" value="100" style="font-size: 16px; font-weight: 700; margin-bottom: 12px;" />
+
+        <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px;">LEVERAGE MULTIPLIER</div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 18px;">
+          <button class="chip active" style="text-align:center;">2x</button>
+          <button class="chip" style="text-align:center;">5x</button>
+          <button class="chip" style="text-align:center;">10x</button>
+          <button class="chip" style="text-align:center;">50x</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <button class="btn-cyan" onclick="notify('CALL (LONG) Order Placed!')">
+            <i data-lucide="trending-up" style="width: 18px;"></i> CALL ▲
+          </button>
+          <button class="btn-cyan" style="background: linear-gradient(135deg, #FF007A 0%, #7F00FF 100%); box-shadow: 0 6px 20px rgba(255, 0, 122, 0.35);" onclick="notify('PUT (SHORT) Order Placed!')">
+            <i data-lucide="trending-down" style="width: 18px;"></i> PUT ▼
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 5: MAJIXBET SPORTS ================= -->
+    <section id="screen-bet" class="page">
+      <div style="margin-bottom: 16px;">
+        <h2 style="font-size: 20px; font-weight: 700;">MajixBet Sports</h2>
+        <p style="font-size: 13px; color: var(--text-muted);">Decentralized sports prediction market</p>
+      </div>
+
+      <!-- Sports Categories -->
+      <div class="subnav-bar">
+        <div class="chip active">🏆 UEFA Champions</div>
+        <div class="chip">⚽ Premier League</div>
+        <div class="chip">🏀 NBA League</div>
+        <div class="chip">🎾 Grand Slam</div>
+      </div>
+
+      <!-- Luxury Match Card -->
+      <div class="glass-card glass-card-glow-cyan" style="padding: 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size: 11px; color: var(--cyan); font-weight: 700; margin-bottom: 14px;">
+          <span>SEMI-FINAL • LIVE 64'</span>
+          <span style="background: rgba(0, 242, 254, 0.15); padding: 2px 8px; border-radius: 4px;">HOT MATCH</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; margin-bottom: 18px;">
+          <div style="flex: 1;">
+            <div style="font-size: 16px; font-weight: 800;">Real Madrid</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Home</div>
+          </div>
+          <div class="font-outfit" style="font-size: 20px; font-weight: 800; color: var(--cyan); padding: 0 10px;">VS</div>
+          <div style="flex: 1;">
+            <div style="font-size: 16px; font-weight: 800;">Man City</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Away</div>
+          </div>
+        </div>
+
+        <!-- Glowing Odds Squares -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px;">
+          <div class="glass-card" style="margin-bottom:0; text-align:center; padding:10px 6px; cursor:pointer; border-color:var(--border-cyan);" onclick="notify('Selected 1 (Real Madrid 1.85)')">
+            <div style="font-size: 11px; color: var(--text-muted);">1</div>
+            <div class="font-outfit" style="font-size: 16px; font-weight: 800; color: var(--cyan); margin-top: 2px;">1.85</div>
+          </div>
+          <div class="glass-card" style="margin-bottom:0; text-align:center; padding:10px 6px; cursor:pointer;" onclick="notify('Selected X (Draw 3.40)')">
+            <div style="font-size: 11px; color: var(--text-muted);">X (Draw)</div>
+            <div class="font-outfit" style="font-size: 16px; font-weight: 800; color: #FFF; margin-top: 2px;">3.40</div>
+          </div>
+          <div class="glass-card" style="margin-bottom:0; text-align:center; padding:10px 6px; cursor:pointer;" onclick="notify('Selected 2 (Man City 2.10)')">
+            <div style="font-size: 11px; color: var(--text-muted);">2</div>
+            <div class="font-outfit" style="font-size: 16px; font-weight: 800; color: var(--magenta); margin-top: 2px;">2.10</div>
+          </div>
+        </div>
+
+        <!-- Stake & Action -->
+        <div style="margin-bottom: 14px;">
+          <div style="display:flex; justify-content:space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">
+            <span>Stake $MJX</span>
+            <span id="bet-amount-label">150 $MJX</span>
+          </div>
+          <input type="range" min="10" max="1000" step="10" value="150" style="width:100%; accent-color: var(--cyan);" oninput="document.getElementById('bet-amount-label').innerText = this.value + ' $MJX'" />
+        </div>
+
+        <button class="btn-cyan" onclick="notify('Bet placed successfully!')">Place Prediction Bet</button>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 6: WALLET ================= -->
+    <section id="screen-wallet" class="page">
+      <div style="margin-bottom: 18px;">
+        <h2 style="font-size: 20px; font-weight: 700;">Web3 Wallet</h2>
+        <p style="font-size: 13px; color: var(--text-muted);">Manage your digital assets & transactions</p>
+      </div>
+
+      <div class="glass-card glass-card-glow-cyan" style="text-align: center; padding: 24px 18px;">
+        <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Estimated Value</div>
+        <div class="font-outfit" style="font-size: 36px; font-weight: 800; margin: 6px 0;">$5,870 <span style="font-size: 18px; color: var(--cyan);">USD</span></div>
+        <div style="font-size: 14px; color: var(--cyan); font-weight: 600;">5,870 $MJX Token</div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+          <button class="btn-cyan" onclick="notify('Deposit Address Copied')"><i data-lucide="arrow-down-left" style="width: 16px;"></i> Deposit</button>
+          <button class="btn-glass" onclick="goToScreen('screen-withdraw')" style="background: rgba(255,255,255,0.08);"><i data-lucide="arrow-up-right" style="width: 16px;"></i> Withdraw</button>
+        </div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin: 18px 0 10px 4px;">RECENT TRANSACTIONS</div>
+      <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center; padding: 14px;">
+        <div style="display:flex; align-items:center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(0, 242, 254, 0.1); display:flex; align-items:center; justify-content:center;">
+            <i data-lucide="play" style="color: var(--cyan); width: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Daily Video Reward</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Today, 02:14 PM</div>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="font-outfit" style="color: var(--cyan); font-weight: 700;">+1 $MJX</div>
+          <div style="font-size: 10px; color: #00E676;">Completed</div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center; padding: 14px;">
+        <div style="display:flex; align-items:center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(0, 230, 118, 0.1); display:flex; align-items:center; justify-content:center;">
+            <i data-lucide="trending-up" style="color: #00E676; width: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Trade Profit (BTC Long)</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Yesterday</div>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="font-outfit" style="color: #00E676; font-weight: 700;">+50 $MJX</div>
+          <div style="font-size: 10px; color: #00E676;">Completed</div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center; padding: 14px;">
+        <div style="display:flex; align-items:center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(127, 0, 255, 0.15); display:flex; align-items:center; justify-content:center;">
+            <i data-lucide="gift" style="color: var(--violet); width: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Referral Commission</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Sep 05, 2026</div>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="font-outfit" style="color: var(--violet); font-weight: 700;">+10 $MJX</div>
+          <div style="font-size: 10px; color: #00E676;">Completed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 7: WITHDRAWAL ================= -->
+    <section id="screen-withdraw" class="page">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom: 18px;">
+        <button class="btn-glass" onclick="goToScreen('screen-wallet')" style="padding: 8px; border-radius: 50%;"><i data-lucide="arrow-left" style="width: 18px;"></i></button>
+        <div>
+          <h2 style="font-size: 18px; font-weight: 700;">Withdraw Tokens</h2>
+          <p style="font-size: 12px; color: var(--text-muted);">Available: 5,870 $MJX (Min 1,000)</p>
+        </div>
+      </div>
+
+      <div class="glass-card" style="padding: 18px;">
+        <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); display:block; margin-bottom: 8px;">SELECT NETWORK</label>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px;">
+          <button class="chip active" style="text-align:center; padding: 10px;">TON Network</button>
+          <button class="chip" style="text-align:center; padding: 10px;">USDT TRC-20</button>
+        </div>
+
+        <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); display:block; margin-bottom: 8px;">DESTINATION WALLET ADDRESS</label>
+        <div style="position: relative; margin-bottom: 16px;">
+          <input type="text" class="glass-input" placeholder="EQD... or Paste TON Address" value="EQB_vMajidTradingX929487vLkQ" />
+          <button class="btn-glass" style="position: absolute; right: 6px; top: 6px; padding: 6px 12px; font-size: 12px;" onclick="notify('Pasted from clipboard')">Paste</button>
+        </div>
+
+        <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); display:block; margin-bottom: 8px;">AMOUNT TO WITHDRAW ($MJX)</label>
+        <input type="number" class="glass-input" value="1000" style="font-size: 16px; font-weight: 700; margin-bottom: 18px;" />
+
+        <button class="btn-cyan" onclick="notify('Withdrawal request submitted for 1,000 $MJX')"><i data-lucide="check" style="width: 18px;"></i> Confirm & Withdraw</button>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 8: REFERRAL ================= -->
+    <section id="screen-referral" class="page">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, rgba(127,0,255,0.4) 0%, rgba(11,14,20,0) 80%); border: 1px solid var(--violet); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
+          <i data-lucide="gift" style="color: var(--violet); width: 34px; height: 34px;"></i>
+        </div>
+        <h2 style="font-size: 22px; font-weight: 800;">Invite Friends & Earn</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Earn <span style="color: var(--cyan); font-weight: 700;">10% Lifetime</span> on all their trading & game earnings</p>
+      </div>
+
+      <div class="glass-card" style="padding: 18px; margin-bottom: 14px;">
+        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px;">YOUR UNIQUE INVITE LINK</div>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" class="glass-input" readonly value="https://t.me/MJX_Bot?start=ref_majid" style="font-size: 13px;" />
+          <button class="btn-cyan" style="width: auto; padding: 0 18px;" onclick="copyReferral()"><i data-lucide="copy" style="width: 16px;"></i> Copy</button>
+        </div>
+      </div>
+
+      <div class="glass-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: center;">
+        <div style="border-right: 1px solid var(--border-glass); padding-right: 8px;">
+          <div style="font-size: 12px; color: var(--text-muted);">Total Invites</div>
+          <div class="font-outfit" style="font-size: 24px; font-weight: 800; color: #FFF; margin-top: 4px;">24</div>
+        </div>
+        <div>
+          <div style="font-size: 12px; color: var(--text-muted);">Earned Rewards</div>
+          <div class="font-outfit" style="font-size: 24px; font-weight: 800; color: var(--cyan); margin-top: 4px;">240 <span style="font-size: 14px;">$MJX</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 9: LEADERBOARD ================= -->
+    <section id="screen-leaderboard" class="page">
+      <div style="margin-bottom: 18px;">
+        <h2 style="font-size: 20px; font-weight: 700;">Global Leaderboard</h2>
+        <p style="font-size: 13px; color: var(--text-muted);">Top performing $MJX holders and traders</p>
+      </div>
+
+      <!-- Top 3 Podium Cards -->
+      <div style="display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 8px; align-items: flex-end; margin-bottom: 18px; text-align: center;">
+        <!-- #2 Silver -->
+        <div class="glass-card" style="padding: 12px 6px; margin-bottom: 0;">
+          <div style="font-size: 16px;">🥈</div>
+          <div style="font-weight: 700; font-size: 13px; margin-top: 4px;">Alex_DXB</div>
+          <div class="font-outfit" style="font-size: 12px; color: var(--cyan); font-weight: 700; margin-top: 2px;">24,190</div>
+        </div>
+        <!-- #1 Gold -->
+        <div class="glass-card glass-card-glow-cyan" style="padding: 18px 6px; margin-bottom: 0; transform: translateY(-8px);">
+          <div style="font-size: 22px;">👑</div>
+          <div style="font-weight: 800; font-size: 14px; margin-top: 4px; color: #FFD700;">CryptoSultan</div>
+          <div class="font-outfit" style="font-size: 14px; color: var(--cyan); font-weight: 800; margin-top: 2px;">48,500</div>
+        </div>
+        <!-- #3 Bronze -->
+        <div class="glass-card" style="padding: 10px 6px; margin-bottom: 0;">
+          <div style="font-size: 16px;">🥉</div>
+          <div style="font-weight: 700; font-size: 13px; margin-top: 4px;">Satoshi99</div>
+          <div class="font-outfit" style="font-size: 12px; color: var(--cyan); font-weight: 700; margin-top: 2px;">19,420</div>
+        </div>
+      </div>
+
+      <!-- Rank List -->
+      <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px;">
+        <div style="display:flex; align-items:center; gap: 12px;">
+          <span style="font-weight: 700; color: var(--text-muted); width: 20px;">#4</span>
+          <span style="font-weight: 600;">AlphaTrader_UAE</span>
+        </div>
+        <span class="font-outfit" style="color: var(--cyan); font-weight: 700;">16,210 $MJX</span>
+      </div>
+
+      <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px;">
+        <div style="display:flex; align-items:center; gap: 12px;">
+          <span style="font-weight: 700; color: var(--text-muted); width: 20px;">#5</span>
+          <span style="font-weight: 600;">Elena_K</span>
+        </div>
+        <span class="font-outfit" style="color: var(--cyan); font-weight: 700;">14,900 $MJX</span>
+      </div>
+
+      <!-- Pinned User Card -->
+      <div class="glass-card" style="border-color: var(--cyan); background: rgba(0, 242, 254, 0.08); display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; margin-top: 14px;">
+        <div style="display:flex; align-items:center; gap: 12px;">
+          <span style="font-weight: 800; color: var(--cyan); font-size: 15px;">#42</span>
+          <div>
+            <div style="font-weight: 700;">Majid (You)</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Top 5% Globally</div>
+          </div>
+        </div>
+        <span class="font-outfit" style="color: var(--cyan); font-weight: 800; font-size: 15px;">5,870 $MJX</span>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 10: PROFILE ================= -->
+    <section id="screen-profile" class="page">
+      <div style="text-align: center; margin-bottom: 22px;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; border: 2.5px solid var(--cyan); box-shadow: 0 0 20px var(--cyan-glow); margin: 0 auto 12px auto; overflow: hidden; background: #131722; display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="user" style="color: var(--cyan); width: 40px; height: 40px;"></i>
+        </div>
+        <h2 style="font-size: 20px; font-weight: 800;" id="profile-name">Majid Lashani</h2>
+        <div style="display:inline-block; margin-top: 4px;"><span class="badge-vip">Gold Tier Member</span></div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; text-align: center;">
+        <div class="glass-card" style="padding: 12px 6px; margin-bottom: 0;">
+          <div style="font-size: 11px; color: var(--text-muted);">Watched</div>
+          <div class="font-outfit" style="font-weight: 800; font-size: 16px; color: var(--cyan); margin-top: 2px;">142</div>
+        </div>
+        <div class="glass-card" style="padding: 12px 6px; margin-bottom: 0;">
+          <div style="font-size: 11px; color: var(--text-muted);">Win Rate</div>
+          <div class="font-outfit" style="font-weight: 800; font-size: 16px; color: #00E676; margin-top: 2px;">68%</div>
+        </div>
+        <div class="glass-card" style="padding: 12px 6px; margin-bottom: 0;">
+          <div style="font-size: 11px; color: var(--text-muted);">Tier</div>
+          <div class="font-outfit" style="font-weight: 800; font-size: 16px; color: var(--violet); margin-top: 2px;">Gold</div>
+        </div>
+      </div>
+
+      <!-- Account Rows -->
+      <div class="glass-card" style="padding: 4px 14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0; border-bottom: 1px solid var(--border-glass);">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <i data-lucide="shield" style="color: var(--cyan); width: 18px;"></i>
+            <span style="font-size: 14px; font-weight: 600;">Account Security</span>
+          </div>
+          <span style="font-size: 12px; color: #00E676; font-weight: 600;">High (2FA)</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0; border-bottom: 1px solid var(--border-glass);">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <i data-lucide="wallet" style="color: var(--cyan); width: 18px;"></i>
+            <span style="font-size: 14px; font-weight: 600;">Linked Wallet</span>
+          </div>
+          <span style="font-size: 12px; color: var(--text-muted);">EQB_...9487</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0;">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <i data-lucide="badge-check" style="color: var(--cyan); width: 18px;"></i>
+            <span style="font-size: 14px; font-weight: 600;">KYC Status</span>
+          </div>
+          <span style="font-size: 12px; color: var(--cyan); font-weight: 700;">Verified ✓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 11: SETTINGS ================= -->
+    <section id="screen-settings" class="page">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom: 18px;">
+        <button class="btn-glass" onclick="goToScreen('screen-home')" style="padding: 8px; border-radius: 50%;"><i data-lucide="arrow-left" style="width: 18px;"></i></button>
+        <h2 style="font-size: 18px; font-weight: 700;">Settings & Preferences</h2>
+      </div>
+
+      <div class="glass-card" style="padding: 4px 16px; margin-bottom: 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0; border-bottom: 1px solid var(--border-glass);">
+          <span style="font-size: 14px; font-weight: 600;">Dark Mode</span>
+          <label class="switch"><input type="checkbox" checked disabled><span class="slider"></span></label>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0; border-bottom: 1px solid var(--border-glass);">
+          <span style="font-size: 14px; font-weight: 600;">Push Notifications</span>
+          <label class="switch"><input type="checkbox" checked onchange="notify('Notifications updated')"><span class="slider"></span></label>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0; border-bottom: 1px solid var(--border-glass);">
+          <span style="font-size: 14px; font-weight: 600;">2FA Biometric / Telegram</span>
+          <label class="switch"><input type="checkbox" checked onchange="notify('2FA updated')"><span class="slider"></span></label>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0; border-bottom: 1px solid var(--border-glass);">
+          <span style="font-size: 14px; font-weight: 600;">Haptic & Sound</span>
+          <label class="switch"><input type="checkbox" checked onchange="notify('Sound updated')"><span class="slider"></span></label>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 14px 0;">
+          <span style="font-size: 14px; font-weight: 600;">Language</span>
+          <span style="font-size: 13px; color: var(--cyan); font-weight: 600; cursor:pointer;" onclick="notify('Language set to English (US)')">English (US)</span>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 24px;">
+        <button style="background: transparent; border: none; color: var(--magenta); font-weight: 700; font-size: 14px; cursor: pointer;" onclick="notify('Wallet Disconnected')">
+          Disconnect Wallet
+        </button>
+        <div style="font-size: 11px; color: var(--text-dim); margin-top: 10px;">MJX Ecosystem • v2.4.0 (Build 904)</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= FLOATING 5-TAB BOTTOM NAVIGATION ================= -->
+  <div class="bottom-nav-container">
+    <nav class="bottom-nav">
+      <button class="nav-item active" id="nav-home" onclick="handleBottomNav('screen-home', this)">
+        <i data-lucide="layout-grid"></i>
+        <span>Home</span>
+      </button>
+
+      <button class="nav-item" id="nav-tasks" onclick="handleBottomNav('screen-tasks', this)">
+        <i data-lucide="check-square"></i>
+        <span>Tasks</span>
+      </button>
+
+      <button class="nav-item" id="nav-trade" onclick="handleBottomNav('screen-trading', this)">
+        <i data-lucide="candlestick-chart"></i>
+        <span>Trade</span>
+      </button>
+
+      <button class="nav-item" id="nav-wallet" onclick="handleBottomNav('screen-wallet', this)">
+        <i data-lucide="wallet"></i>
+        <span>Wallet</span>
+      </button>
+
+      <button class="nav-item" id="nav-profile" onclick="handleBottomNav('screen-profile', this)">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </div>
+
+  <script>
+    // Initialize Telegram WebApp SDK
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      try {
+        if (tg.initDataUnsafe?.user?.first_name) {
+          const uName = tg.initDataUnsafe.user.first_name;
+          document.getElementById('home-username').innerText = uName;
+          document.getElementById('profile-name').innerText = uName + (tg.initDataUnsafe.user.last_name ? ' ' + tg.initDataUnsafe.user.last_name : '');
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    // Lucide Icons initialization
+    lucide.createIcons();
+
+    let balance = 5870;
+
+    // Screen Switching
+    function goToScreen(screenId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Sync Bottom Nav tabs if applicable
+      const navMap = {
+        'screen-home': 'nav-home',
+        'screen-tasks': 'nav-tasks',
+        'screen-trading': 'nav-trade',
+        'screen-wallet': 'nav-wallet',
+        'screen-profile': 'nav-profile'
+      };
+
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      if (navMap[screenId]) {
+        document.getElementById(navMap[screenId])?.classList.add('active');
+      }
+
+      if (tg?.HapticFeedback) {
+        tg.HapticFeedback.selectionChanged();
+      }
+    }
+
+    function handleBottomNav(screenId, el) {
+      goToScreen(screenId);
+    }
+
+    // Toast Notification
+    function notify(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = message;
+      toast.classList.add('show');
+      if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2300);
+    }
+
+    // Claim Task Logic (Syncs with backend if available)
+    async function claimTask(taskId, taskName, reward) {
+      try {
+        const res = await fetch(`/api/tasks/${taskId}/complete`, { method: 'POST' });
+        const data = await res.json();
+        if (data.ok && data.balance) {
+          balance = data.balance;
+        } else {
+          balance += reward;
+        }
+      } catch (err) {
+        // Fallback demo state
+        balance += reward;
+      }
+      updateBalanceDisplay();
+      notify(`+${reward} $MJX Claimed: ${taskName}!`);
+    }
+
+    function simulateWatchVideo() {
+      notify("Watching video... +1 $MJX rewarded!");
+      balance += 1;
+      updateBalanceDisplay();
+    }
+
+    function copyReferral() {
+      navigator.clipboard?.writeText("https://t.me/MJX_Bot?start=ref_majid");
+      notify("Referral link copied to clipboard!");
+    }
+
+    function updateBalanceDisplay() {
+      document.getElementById('home-balance').innerText = balance.toLocaleString();
+      document.getElementById('home-balance-usd').innerText = (balance * 0.001).toFixed(2);
+    }
+
+    // Load initial data from backend if server is active
+    async function loadBackendData() {
+      try {
+        const meRes = await fetch('/api/me');
+        if (meRes.ok) {
+          const meData = await meRes.json();
+          if (typeof meData.balance === 'number') {
+            balance = meData.balance;
+            updateBalanceDisplay();
+          }
+        }
+      } catch (err) {
+        console.log("Using standalone demo state");
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadBackendData();
+    });
+  </script>
+</body>
+</html>
